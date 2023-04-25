@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS `statuses`(
+    `status_code` VARCHAR(5) PRIMARY KEY NOT NULL,
+    `status` VARCHAR(40) NOT NULL,
+    `share_type` ENUM('Public','Friends','Only Me'),
+    `date` DATE NOT NULL,
+    `allow_like`BOOLEAN,
+    `allow_comment` BOOLEAN,
+    `allow_share` BOOLEAN
+);
+
+SELECT * FROM statuses WHERE status_code = '$status_code'
+
+INSERT INTO `statuses` VALUES('$status_code', '$status', '$share', '$date', '$allow_like','$allow_comment','$allow_share')
+
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '$dbnm' AND TABLE_NAME = 'statuses';
+
+SELECT * FROM statuses WHERE status LIKE '%$search_string%';
